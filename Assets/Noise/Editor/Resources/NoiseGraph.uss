@@ -1,0 +1,17 @@
+Label {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+.stretch {
+    position: absolute;
+    left: -5000;
+    top: -5000;
+    right: -5000;
+    bottom: -5000;
+}
+
+.root-background {
+    background-color: rgb(29, 27, 34);
+}

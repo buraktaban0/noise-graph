@@ -1,0 +1,62 @@
+GridBackground {
+    --grid-background-color: rgb(29, 27, 34);
+    --line-color: rgba(193, 196, 192, 0.1);
+    --thick-line-color: rgba(193, 196, 192, 0.1);
+    --spacing : 10;
+}
+
+.node {
+    
+}
+
+.input {
+    padding-right: 4;
+    flex-direction: row;
+}
+
+.output {
+    padding-left: 4;
+    flex-direction: row;
+}
+
+.input > VisualElement {
+    flex-direction: column;
+}
+
+.output > VisualElement {
+    flex-direction: column;
+}
+
+#PortsContainer {
+    width: 32;
+}
+
+#BoundFieldsContainer {
+    flex-grow: 1;
+}
+
+.input > VisualElement > * {
+    height: 24;
+}
+
+NoiseGraphNodeView * Label {
+    min-width: 0;
+    margin-right: 16;
+}
+
+Port {
+    align-self: left;
+}
+
+NodeIMGUIContainer {
+    align-self: left;
+}
+
+Port > NodeIMGUIContainer {
+    margin-left: 2;
+    margin-right: 0;
+}
+
+#contents {
+    flex: 1 1 auto;
+}

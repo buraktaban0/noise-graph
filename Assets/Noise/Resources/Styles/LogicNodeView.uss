@@ -1,0 +1,102 @@
+LogicNodeView {
+   width: 300;
+ }
+
+LogicNodeView.input {
+  width: 150;
+}
+
+LogicNodeView.output {
+  width: 150;
+}
+
+LogicNodeView #collapsible-area {
+    width: 0;
+    height: 0;
+}
+
+LogicNodeView #previewFiller.expanded {
+    width: 200;
+    padding-bottom: 200;
+}
+
+LogicNodeView #controls {
+    background-color: rgba(63, 63, 63, 0.8);
+}
+
+LogicNodeView.input #title {
+    background-color: rgba(59, 94, 68, 0.8);
+}
+
+LogicNodeView.input #contents {
+    background-color: rgba(59, 94, 68, 0.8);
+}
+
+LogicNodeView.output #title {
+    background-color: rgba(59, 83, 94, 0.8);
+}
+
+LogicNodeView.output #contents {
+    background-color: rgba(59, 83, 94, 0.8);
+}
+
+LogicNodeView #controls > #items {
+    padding-top: 4;
+    padding-bottom: 4;
+}
+
+LogicNodeView > #resize {
+    background-image : resource("GraphView/Nodes/NodeChevronLeft.png");
+    position-type: absolute;
+    position-right: 5;
+    position-bottom: 5;
+    width: 10;
+    height: 10;
+    cursor: resize-up-left;
+}
+
+LogicNodeView > #portInputContainer {
+    position-type: absolute;
+    width: 212;
+    position-left: -200;
+    position-top: 46;
+}
+
+LogicNodeView > #settings-container {
+	background-color : rgb(63, 63, 63);
+}
+
+LogicNodeView.input > #settings-container {
+    background-color: rgba(59, 94, 68, 0.8);
+}
+
+#settings-button {
+    width: 16;
+    align-self: center;
+    justify-content: center;
+    padding-left: 8;
+}
+
+#settings-button > #icon {
+    width : 12;
+    height : 12;
+    align-self: center;
+    visibility: hidden;
+    background-image : resource("Icons/SettingsIcons");
+}
+
+.node:hover #settings-button > #icon {
+    visibility: visible;
+}
+
+#settings-button:hover > #icon {
+    align-self: center;
+    background-color: #2B2B2B;
+    background-image : resource("Icons/SettingsIcons_hover");
+}
+
+#settings-button.clicked > #icon{
+    background-color: #2B2B2B;
+    background-image : resource("Icons/SettingsIcons_hover");
+    visibility: visible;
+}
