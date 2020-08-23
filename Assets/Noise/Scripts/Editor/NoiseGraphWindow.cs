@@ -15,11 +15,9 @@ namespace Noise.Editor
 	public class NoiseGraphWindow : EditorWindow
 	{
 
-		internal static NoiseGraph currentViewedGraph { get; set; }
+		public static NoiseGraph currentViewedGraph { get; set; }
 
 		private NoiseGraphView graphView;
-
-		private string fileName = "New Graph";
 
 		private void OnEnable()
 		{
@@ -77,7 +75,7 @@ namespace Noise.Editor
 		{
 			var nodes = currentViewedGraph.DeserializeNodes();
 
-			var nodeViews = nodes.Select(node => new NoiseGraphNodeView(node)).ToList();
+			var nodeViews = nodes.Select(node => new NoiseGraphNodeView(node, graphView)).ToList();
 
 		}
 

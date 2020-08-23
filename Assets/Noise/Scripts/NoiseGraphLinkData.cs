@@ -10,14 +10,19 @@ using System.Threading.Tasks;
 public class NoiseGraphLinkData
 {
 
-	public string guid0;
-	public string guid1;
+	public int guid0;
+	public string field0;
 
+	public int guid1;
+	public string field1;
 
-	public NoiseGraphLinkData(string guid0, string guid1)
+	public NoiseGraphLinkData(int guid0, string field0, int guid1, string field1)
 	{
 		this.guid0 = guid0;
+		this.field0 = field0;
+
 		this.guid1 = guid1;
+		this.field1 = field1;
 	}
 }
 

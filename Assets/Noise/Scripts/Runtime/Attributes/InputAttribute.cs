@@ -9,13 +9,18 @@ namespace Noise.Runtime.Attributes
 	[System.AttributeUsage(System.AttributeTargets.Field, Inherited = true, AllowMultiple = true)]
 	public class InputAttribute : Attribute
 	{
+		public Type[] AdditionalAllowedTypes { get; private set; } = new Type[] { };
 
-		public bool IsConstant { get; private set; }
+		public bool HasPort = true;
 
-		public InputAttribute(bool isConstant = false)
+		public bool HasInlineEditor = true;
+
+		public InputAttribute(params Type[] additionalAllowedTypes)
 		{
-			IsConstant = isConstant;
+			this.AdditionalAllowedTypes = additionalAllowedTypes;
 		}
+
+
 
 
 	}

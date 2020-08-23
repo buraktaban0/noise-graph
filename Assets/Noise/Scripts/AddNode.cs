@@ -7,9 +7,7 @@ using UnityEditor.Experimental.GraphView;
 
 public class AddNode : Node
 {
-
-	public string GUID;
-
+	
 	public float x = 0;
 	public float y = 0;
 

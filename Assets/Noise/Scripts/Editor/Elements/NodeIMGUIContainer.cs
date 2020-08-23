@@ -13,18 +13,42 @@ namespace Noise.Editor.Elements
 	public class NodeIMGUIContainer : IMGUIContainer
 	{
 
+		private static readonly float defaultFieldWidthOverride = 38;
+		private static readonly bool defaultWideModeOverride = false;
+		private struct IMGUITypeOverrides
+		{
+			public float fieldWidthOverride;
+			public bool wideModeOverride;
+
+			public IMGUITypeOverrides(bool dummy = true)
+			{
+				fieldWidthOverride = defaultFieldWidthOverride;
+				wideModeOverride = defaultWideModeOverride;
+			}
+		}
+
+		private static readonly Dictionary<Type, IMGUITypeOverrides> imguiTypeOverrides = new Dictionary<Type, IMGUITypeOverrides>()
+		{
+			{ typeof(Vector2), new IMGUITypeOverrides{fieldWidthOverride = defaultFieldWidthOverride * 3f, wideModeOverride = true}} ,
+			{ typeof(Vector3), new IMGUITypeOverrides{fieldWidthOverride = defaultFieldWidthOverride * 4f, wideModeOverride = true}} ,
+			{ typeof(Vector4), new IMGUITypeOverrides{fieldWidthOverride = defaultFieldWidthOverride, wideModeOverride = true}} ,
+		};
+
 		public FieldInfo f { get; private set; }
 		public SerializedObject serializedObject { get; private set; }
 		public object nonSerializedObject { get; private set; }
 
+		public bool labelOnly { get; set; } = false;
+
 		private Undo.UndoRedoCallback undoRedoPerformedCallback;
+
 
 		~NodeIMGUIContainer()
 		{
 			Undo.undoRedoPerformed -= undoRedoPerformedCallback;
 		}
 
-		public NodeIMGUIContainer(FieldInfo f, SerializedObject serializedObject, SerializedFieldWrapper wrapper, object nonSerializedObject, Action onModified, string label = null)
+		public NodeIMGUIContainer(FieldInfo f, SerializedObject serializedObject, SerializedNodeWrapper wrapper, object nonSerializedObject, Action onModified, string label = null)
 		{
 
 			var prop = serializedObject.FindProperty($"node.{f.Name}");
@@ -42,6 +66,13 @@ namespace Noise.Editor.Elements
 				onImguiSetValue(value);
 			};
 
+			var typeOverride = new IMGUITypeOverrides();
+
+			if (imguiTypeOverrides.ContainsKey(f.FieldType))
+			{
+				typeOverride = imguiTypeOverrides[f.FieldType];
+			}
+
 			Action onGUIHandler = () =>
 			{
 
@@ -52,18 +83,29 @@ namespace Noise.Editor.Elements
 				EditorGUIUtility.labelWidth = 64;
 
 				var wideMode = EditorGUIUtility.wideMode;
-				EditorGUIUtility.wideMode = true;
+				EditorGUIUtility.wideMode = typeOverride.wideModeOverride;
 
 				var fieldWidth = EditorGUIUtility.fieldWidth;
-				//EditorGUIUtility.fieldWidth = 24;
+				EditorGUIUtility.fieldWidth = typeOverride.fieldWidthOverride;
+
+				serializedObject.Update();
+				
+				GUIContent labelContent = label == null ? new GUIContent(f.Name) : new GUIContent(label);
+
+				GUILayout.BeginVertical();
 
 				EditorGUI.BeginChangeCheck();
-				GUIContent labelContent = label == null ? new GUIContent(f.Name) : new GUIContent(label);
 				GUILayout.FlexibleSpace();
-				EditorGUILayout.PropertyField(prop, label: labelContent, true, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(false));
+				if (labelOnly)
+				{
+					EditorGUILayout.LabelField(labelContent);
+				}
+				else
+				{
+					bool expanded = EditorGUILayout.PropertyField(prop, label: labelContent, true);
+				}
 				GUILayout.FlexibleSpace();
 				serializedObject.ApplyModifiedProperties();
-				serializedObject.Update();
 				if (EditorGUI.EndChangeCheck())
 				{
 					EditorUtility.SetDirty(serializedObject.targetObject);
@@ -80,6 +122,9 @@ namespace Noise.Editor.Elements
 						onImguiSetValue(valueSerialized);
 					}
 				}
+
+				GUILayout.EndVertical();
+
 
 				EditorGUIUtility.labelWidth = labelWidth;
 				EditorGUIUtility.wideMode = wideMode;

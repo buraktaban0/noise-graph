@@ -23,6 +23,15 @@ namespace Procedural.Jobs.Test
 		[Button]
 		public void DoTest()
 		{
+
+			for (int i = 0; i < 10000; i++)
+			{
+				typeof(float3).GetMethod("op_Addition", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)
+					.Invoke(null, new object[] { 2f, i });
+			}
+
+			return;
+
 			int size = 1024;
 
 			if (rt1 == null || rt1.width != size)

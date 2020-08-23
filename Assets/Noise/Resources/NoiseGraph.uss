@@ -10,51 +10,75 @@ GridBackground {
 }
 
 .input {
-    padding-right: 4;
-    flex-direction: row;
+    padding-right: 4px;
+    flex-direction: column;
 }
 
 .output {
-    padding-left: 4;
-    flex-direction: row;
+    padding-left: 4px;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .input > VisualElement {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 }
 
 .output > VisualElement {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 }
 
 #PortsContainer {
-    width: 32;
+    /*width: 32;*/
+    flex-grow: 1;
+}
+
+#PortsContainer > * {
+    height: 24px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 #BoundFieldsContainer {
     flex-grow: 1;
 }
 
+/*
 .input > VisualElement > * {
-    height: 24;
+    height: 24px;
 }
+*/
 
 NoiseGraphNodeView * Label {
-    min-width: 0;
-    margin-right: 16;
+    min-width: 0px;
+    margin-right: 16px;
 }
 
 Port {
     align-self: left;
+    height: 24px;
+}
+
+.dummyPort {
+    visibility: hidden;
+}
+
+.portlessRow {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 NodeIMGUIContainer {
     align-self: left;
 }
 
-Port > NodeIMGUIContainer {
-    margin-left: 2;
-    margin-right: 0;
+NodeIMGUIContainer {
+    height: auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+    margin-right: 0px;
 }
 
 #contents {

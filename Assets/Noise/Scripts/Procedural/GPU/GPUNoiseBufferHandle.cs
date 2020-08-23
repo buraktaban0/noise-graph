@@ -52,6 +52,13 @@ namespace Procedural.GPU
 			isCreated = true;
 		}
 
+		public void Clear(float val) => Clear(new Color(val, val, val, val));
+		public void Clear(Color color)
+		{
+			var oldRt = RenderTexture.active;
+			RenderTexture.active = this;
+			GL.Clear(false, true, color);
+		}
 
 		public void Resize(int width, int height)
 		{
@@ -71,7 +78,7 @@ namespace Procedural.GPU
 
 			Range = -1f;
 
-			RenderTexture.Release();
+			RenderTexture?.Release();
 			isCreated = false;
 		}
 
@@ -90,6 +97,13 @@ namespace Procedural.GPU
 		public static implicit operator RenderTargetIdentifier(GPUNoiseBufferHandle handle)
 		{
 			return handle.RenderTexture;
+		}
+
+		public static implicit operator GPUNoiseBufferHandle(float val)
+		{
+			var buf = new GPUNoiseBufferHandle(1, 1);
+			buf.Clear(val);
+			return buf;
 		}
 
 	}
