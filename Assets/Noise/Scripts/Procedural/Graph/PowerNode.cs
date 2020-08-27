@@ -17,10 +17,10 @@ namespace Procedural.Graph
 
 		private readonly string shaderName = "Hidden/Procedural/Power";
 
-		[Input] public GPUNoiseBufferHandle a;
+		[Input] public GPUBufferHandle a;
 		[Input] public float power = 1f;
 
-		[Output] public GPUNoiseBufferHandle result;
+		[Output] public GPUBufferHandle result;
 
 		private Material material;
 
@@ -30,7 +30,7 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
 			var power = GetInputValue("x0", this.power);
 
 			if (a.IsCreated == false)

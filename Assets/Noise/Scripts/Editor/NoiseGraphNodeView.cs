@@ -198,7 +198,7 @@ namespace Noise.Editor
 
 				previewElement = new Image()
 				{
-					image = (GPUNoiseBufferHandle)imageObj
+					image = (GPUBufferHandle)imageObj
 				};
 
 				previewElement.style.width = previewSize;

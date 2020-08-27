@@ -13,10 +13,10 @@ namespace Procedural.Graph
 	{
 		private readonly string shaderName = "Hidden/Procedural/Multiply";
 
-		[Input] public GPUNoiseBufferHandle a;
-		[Input] public GPUNoiseBufferHandle b;
+		[Input] public GPUBufferHandle a;
+		[Input] public GPUBufferHandle b;
 
-		[Output] public GPUNoiseBufferHandle result;
+		[Output] public GPUBufferHandle result;
 
 
 		private Material material;
@@ -27,8 +27,8 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
-			var b = GetInputValue("b", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
+			var b = GetInputValue("b", default(GPUBufferHandle));
 
 			if (a.IsCreated == false && b.IsCreated == false)
 			{

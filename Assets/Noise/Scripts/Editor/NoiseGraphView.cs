@@ -11,14 +11,13 @@ using UnityEngine.UIElements;
 
 namespace Noise.Editor
 {
-
 	public class NoiseGraphView : GraphView
 	{
-		protected override bool canCopySelection => true;
-		protected override bool canCutSelection => true;
-		protected override bool canPaste => true;
+		protected override bool canCopySelection      => true;
+		protected override bool canCutSelection       => true;
+		protected override bool canPaste              => true;
 		protected override bool canDuplicateSelection => true;
-		protected override bool canDeleteSelection => true;
+		protected override bool canDeleteSelection    => true;
 
 		private NoiseGraph graph;
 
@@ -44,46 +43,45 @@ namespace Noise.Editor
 			this.AddElement(masterView);
 
 
-
+			nodeCreationRequest += OnNodeCreationRequest;
 		}
 
-
+		private void OnNodeCreationRequest(NodeCreationContext obj)
+		{
+			Debug.Log("OnNodeCreationRequest");
+			
+			SearchWindowContext cxt = new SearchWindowContext(obj.screenMousePosition);
+			var provider = new SearchWindowProvider();
+			SearchWindow.Open(customStyle, provider)
+		}
 
 
 		public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
 		{
 			var compatiblePorts = new List<Port>();
 
-			var startPortData = (PortData)(startPort.userData);
+			var startPortData = (PortData) (startPort.userData);
 			var startPortTypes = startPortData.types;
 
 			ports.ForEach(port =>
 			{
-				var portData = (PortData)port.userData;
+				var portData = (PortData) port.userData;
 				var portTypes = portData.types;
 
 				if (port.direction == startPort.direction ||
-						port == startPort ||
-						port.node == startPort.node)
+				    port == startPort ||
+				    port.node == startPort.node)
 				{
-					Debug.Log("Simple fail " + startPort.name + " " + port.name);
+					Debug.Log($"Simple fail {startPort.name} {port.name}");
 					return;
 				}
 
-				if (portTypes.Intersect(startPortTypes).Count() > 0)
+				if (portTypes.Intersect(startPortTypes).Any())
 				{
-					Debug.Log("Intersect " + startPort.name + " " + port.name);
+					Debug.Log($"Intersect {startPort.name} {port.name}");
 					compatiblePorts.Add(port);
 					return;
 				}
-
-
-				//if (simpleCompatibility)
-				//{
-				//	Debug.Log("Simple " + startPort.name + " " + port.name);
-				//	compatiblePorts.Add(port);
-				//	return;
-				//}
 
 
 				var outputTypes = port.direction == Direction.Output ? portTypes : startPortTypes;
@@ -91,24 +89,28 @@ namespace Noise.Editor
 
 				var implicitCompatibility = outputTypes.Any(t1 => inputTypes.Any(t2 =>
 				{
-					var hasMethod = t2.GetMethods(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(m => m.Name.Equals("op_Implicit") && m.GetParameters().FirstOrDefault(p => p.ParameterType == t1) != default && m.ReturnType == t2) != null;
-					Debug.Log(t1 + "  " + t2 + "  " + hasMethod + " - " + port.name);
+					var hasMethod = t2.GetMethods(BindingFlags.Public | BindingFlags.Static)
+					                  .FirstOrDefault(m => m.Name.Equals("op_Implicit") &&
+					                                       m.GetParameters()
+					                                        .FirstOrDefault(p => p.ParameterType == t1) != default &&
+					                                       m.ReturnType == t2) != null;
+					Debug.Log($"{t1}  {t2}  {hasMethod} - {port.name}");
 					return hasMethod;
 				}));
 
 				if (implicitCompatibility)
 				{
-					Debug.Log("Implicit " + startPort.name + " " + port.name);
+					Debug.Log($"Implicit {startPort.name} {port.name}");
 					compatiblePorts.Add(port);
 				}
 			});
 
 			return compatiblePorts;
-
 		}
 
 
-		protected override void CollectCopyableGraphElements(IEnumerable<GraphElement> elements, HashSet<GraphElement> elementsToCopySet)
+		protected override void CollectCopyableGraphElements(IEnumerable<GraphElement> elements,
+		                                                     HashSet<GraphElement> elementsToCopySet)
 		{
 			elements.ToList().ForEach(el =>
 			{
@@ -116,11 +118,7 @@ namespace Noise.Editor
 				{
 					elementsToCopySet.Add(el);
 				}
-
 			});
 		}
-
-
 	}
-
 }

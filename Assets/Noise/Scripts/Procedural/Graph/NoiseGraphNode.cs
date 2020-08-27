@@ -23,8 +23,8 @@ namespace Procedural.Graph
 
 		protected NoiseGraph noiseGraph;
 
-		private GPUNoiseBufferHandle buffer;
-		public ref GPUNoiseBufferHandle Buffer
+		private GPUBufferHandle buffer;
+		public ref GPUBufferHandle Buffer
 		{
 			get
 			{
@@ -77,7 +77,7 @@ namespace Procedural.Graph
 			isClear = true;
 		}
 
-		public GPUNoiseBufferHandle GetBuffer()
+		public GPUBufferHandle GetBuffer()
 		{
 			ValidateBuffer();
 			return Buffer;
@@ -93,7 +93,7 @@ namespace Procedural.Graph
 					if (buffer.IsCreated)
 						buffer.Release();
 
-					buffer = new GPUNoiseBufferHandle(size, size);
+					buffer = new GPUBufferHandle(size, size);
 				}
 			}
 			else

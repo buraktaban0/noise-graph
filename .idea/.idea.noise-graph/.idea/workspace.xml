@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5745a952-5074-4ca7-9074-647e637dfa3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphNodeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphNodeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUNoiseBufferHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUNoiseBufferHandle.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/AddNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/AddNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/ClampNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/ClampNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/CurveTransformNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/CurveTransformNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/LerpNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/LerpNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MinMaxNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MinMaxNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MultiplyNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MultiplyNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseGraphNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseGraphNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseMasterNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseMasterNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PerlinNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PerlinNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PowerNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PowerNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PreviewNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PreviewNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/RemapNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/RemapNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/SubtractNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/SubtractNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/New Layered Noise 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/New Layered Noise 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/AddNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/AddNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MasterNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MasterNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SourceNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/ClampNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/AddNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gd2Ge6uOOs4LDf9jJijLahT9yU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5745a952-5074-4ca7-9074-647e637dfa3a" name="Default Changelist" comment="" />
+      <created>1598430056959</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598430056959</updated>
+      <workItem from="1598430066561" duration="10680000" />
+      <workItem from="1598530110606" duration="28000" />
+      <workItem from="1598530164937" duration="5148000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1270" y="12" key="RiderGenerateDialog" timestamp="1598435929108">
+      <screen x="-1920" y="-225" width="1920" height="1080" />
+    </state>
+    <state x="-1270" y="12" key="RiderGenerateDialog/-1920.-225.1920.1080/0.0.1792.1120@-1920.-225.1920.1080" timestamp="1598435929108" />
+    <state x="-1144" y="-97" width="1131" height="831" key="SettingsEditor" timestamp="1598432330661">
+      <screen x="-1920" y="-225" width="1920" height="1080" />
+    </state>
+    <state x="-1144" y="-97" width="1131" height="831" key="SettingsEditor/-1920.-225.1920.1080/0.0.1792.1120@-1920.-225.1920.1080" timestamp="1598432330661" />
+    <state x="-1297" y="14" width="672" height="678" key="search.everywhere.popup" timestamp="1598454148747">
+      <screen x="-1920" y="-225" width="1920" height="1080" />
+    </state>
+    <state x="-1297" y="14" width="672" height="678" key="search.everywhere.popup/-1920.-225.1920.1080/0.23.1792.1097@-1920.-225.1920.1080" timestamp="1598454148747" />
+  </component>
+</project>

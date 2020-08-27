@@ -20,10 +20,10 @@ namespace Procedural.Graph
 	public class PreviewNode : NoiseGraphNode
 	{
 
-		[Input] public GPUNoiseBufferHandle a;
+		[Input] public GPUBufferHandle a;
 		[Input] public bool update = true;
 
-		[Output] public GPUNoiseBufferHandle output;
+		[Output] public GPUBufferHandle output;
 
 		[HideInInspector]
 		public Texture2D previewTexture;
@@ -50,7 +50,7 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
 
 
 			if (a.IsCreated == false)

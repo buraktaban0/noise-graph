@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Noise.Runtime.Nodes
 {
-	public class AddNode : NoiseGraphNode
+	public class MultiplyNode : NoiseGraphNode
 	{
 		[Input(typeof(GPUBufferHandle))]
 		public float A;
@@ -26,14 +26,14 @@ namespace Noise.Runtime.Nodes
 
 			if (a is float af && b is float bf)
 			{
-				SetOutput("Out", af + bf);
+				SetOutput("Out", af * bf);
 				return;
 			}
 
 			var buffA = GPUBufferHandle.Create(a);
 			var buffB = GPUBufferHandle.Create(b);
 
-			var material = MaterialCache.GetMaterial(MaterialCache.Op.Add);
+			var material = MaterialCache.GetMaterial(MaterialCache.Op.Multiply);
 			int pass = 0;
 
 			material.SetTexture(HASH_TEXA, buffA);

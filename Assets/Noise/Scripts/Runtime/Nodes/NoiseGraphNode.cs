@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Noise.Runtime.Attributes;
+﻿using System.Collections.Generic;
 using Procedural.GPU;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Noise.Runtime.Nodes
 {
-
 	[System.Serializable]
 	public abstract partial class NoiseGraphNode
 	{
-
 		protected static readonly int HASH_TEXA = Shader.PropertyToID("_TexA");
 		protected static readonly int HASH_TEXB = Shader.PropertyToID("_TexB");
 		protected static readonly int HASH_TEXC = Shader.PropertyToID("_TexC");
 		protected static readonly int HASH_VALUE = Shader.PropertyToID("_Value");
 		protected static readonly int HASH_FACTOR = Shader.PropertyToID("_Factor");
 		protected static readonly int HASH_RANGE = Shader.PropertyToID("_Range");
+		protected static readonly int HASH_PERCENT = Shader.PropertyToID("_Percent");
 		protected static readonly int HASH_MAP = Shader.PropertyToID("_Map");
 		protected static readonly int HASH_PERM = Shader.PropertyToID("p");
 		protected static readonly int HASH_CURVEDATA = Shader.PropertyToID("_CurveData");
@@ -32,7 +24,7 @@ namespace Noise.Runtime.Nodes
 
 		public int GUID = rand.Next();
 
-		public GPUNoiseBufferHandle buffer;
+		public GPUBufferHandle buffer;
 
 		public bool wasProcessed { get; protected set; } = false;
 
@@ -58,6 +50,12 @@ namespace Noise.Runtime.Nodes
 			}
 
 			return fallbackValue;
+		}
+
+		protected T GetInput<T>(string name, object fallbackValue)
+		{
+			var val = GetInput(name, fallbackValue);
+			return val == null ? default : (T) val;
 		}
 
 		public void SetInput(string name, object value)
@@ -98,7 +96,7 @@ namespace Noise.Runtime.Nodes
 			if (buffer.IsCreated == false)
 			{
 				buffer.Release();
-				buffer = new GPUNoiseBufferHandle(512, 512);
+				buffer = new GPUBufferHandle(512, 512);
 			}
 		}
 
@@ -115,8 +113,5 @@ namespace Noise.Runtime.Nodes
 		{
 			return this.GetType().Name.Replace("Node", "");
 		}
-
-
 	}
-
 }

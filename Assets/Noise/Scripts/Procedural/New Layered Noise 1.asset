@@ -122,7 +122,7 @@ MonoBehaviour:
   normalize: 0
   floorToZero: 1
   logTime: 0
-  curveSampleCount: 454
-  frequency: 0.7
+  curveSampleCount: 307
+  frequency: 0.03
   offset: {x: 2.09, y: 0, z: 0}
   isModified: 0

@@ -20,8 +20,8 @@ namespace Procedural.Graph
 
 		public CurveTransformParams parameters;
 
-		[Input] public GPUNoiseBufferHandle a;
-		[Output] public GPUNoiseBufferHandle result;
+		[Input] public GPUBufferHandle a;
+		[Output] public GPUBufferHandle result;
 
 		private float[] curveData;
 
@@ -40,7 +40,7 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
 
 			if (material == null)
 			{

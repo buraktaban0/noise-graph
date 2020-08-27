@@ -17,11 +17,11 @@ namespace Procedural.Graph
 
 		private readonly string shaderName = "Hidden/Procedural/Lerp";
 
-		[Input] public GPUNoiseBufferHandle a;
-		[Input] public GPUNoiseBufferHandle b;
+		[Input] public GPUBufferHandle a;
+		[Input] public GPUBufferHandle b;
 		[Input] [Range(0f, 1f)] public float t;
 
-		[Output] public GPUNoiseBufferHandle result;
+		[Output] public GPUBufferHandle result;
 
 
 		private Material material;
@@ -33,8 +33,8 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
-			var b = GetInputValue("b", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
+			var b = GetInputValue("b", default(GPUBufferHandle));
 			var t = GetInputValue("t", this.t);
 
 			if (a.IsCreated == false && b.IsCreated == false)

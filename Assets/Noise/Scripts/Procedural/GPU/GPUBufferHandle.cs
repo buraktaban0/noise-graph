@@ -10,19 +10,18 @@ using UnityEngine.Rendering;
 
 namespace Procedural.GPU
 {
-
 	[System.Serializable]
-	public struct GPUNoiseBufferHandle
+	public struct GPUBufferHandle
 	{
-
 		public RenderTexture RenderTexture { get; private set; }
 
-		public int Width { get; private set; }
+		public int Width  { get; private set; }
 		public int Height { get; private set; }
 
 		public bool IsCreated => isCreated && RenderTexture != null;
 		private bool isCreated;
 
+		private bool isTemp;
 
 		/// <summary>
 		/// Theoretical range of values in the buffer. The actual range could be different, this one originates from the fact that the noise nodes generate values in the theoretical range of [0, 1].
@@ -30,13 +29,15 @@ namespace Procedural.GPU
 		public float2 Range { get; set; }
 
 
-		public GPUNoiseBufferHandle(int width, int height)
+		public GPUBufferHandle(int width, int height)
 		{
 			RenderTexture = null;
 			Width = -1;
 			Height = -1;
 			isCreated = false;
 			Range = -1f;
+
+			isTemp = false;
 
 			CreateInternal(width, height);
 		}
@@ -53,11 +54,13 @@ namespace Procedural.GPU
 		}
 
 		public void Clear(float val) => Clear(new Color(val, val, val, val));
+
 		public void Clear(Color color)
 		{
 			var oldRt = RenderTexture.active;
 			RenderTexture.active = this;
 			GL.Clear(false, true, color);
+			RenderTexture.active = oldRt;
 		}
 
 		public void Resize(int width, int height)
@@ -82,29 +85,71 @@ namespace Procedural.GPU
 			isCreated = false;
 		}
 
+		public void ReleaseIfTemp()
+		{
+			if (isTemp)
+			{
+				this.Release();
+			}
+		}
 
-
-		public AsyncGPUReadbackRequest RequestIntoNativeArray(ref NativeArray<float> heightmap, Action<AsyncGPUReadbackRequest> callback)
+		public AsyncGPUReadbackRequest RequestIntoNativeArray(ref NativeArray<float> heightmap,
+		                                                      Action<AsyncGPUReadbackRequest> callback)
 		{
 			return AsyncGPUReadback.RequestIntoNativeArray(ref heightmap, RenderTexture, 0, callback);
 		}
 
+		public static GPUBufferHandle GetTemp(int width, int height)
+		{
+			var rt = UnityEngine.RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.R8);
+			var buffer = new GPUBufferHandle
+			             {
+				             Width = width, Height = height, RenderTexture = rt, isTemp = true, Range = 0f,
+				             isCreated = true
+			             };
+			return buffer;
+		}
 
-		public static implicit operator RenderTexture(GPUNoiseBufferHandle handle)
+		public static GPUBufferHandle Create(object obj)
+		{
+			switch (obj)
+			{
+				case GPUBufferHandle buffer:
+					return buffer;
+				case float f:
+				{
+					var buffer = GetTemp(1, 1);
+					buffer.Clear(f);
+					return buffer;
+				}
+				case bool b:
+				{
+					var buffer = GetTemp(1, 1);
+					buffer.Clear(b ? 1f : 0f);
+					return buffer;
+				}
+				default:
+					throw new Exception($"Cannot create GPUBufferHandle from type {obj.GetType()}");
+			}
+		}
+
+		public static implicit operator RenderTexture(GPUBufferHandle handle)
 		{
 			return handle.RenderTexture;
 		}
-		public static implicit operator RenderTargetIdentifier(GPUNoiseBufferHandle handle)
+
+		public static implicit operator RenderTargetIdentifier(GPUBufferHandle handle)
 		{
 			return handle.RenderTexture;
 		}
 
-		public static implicit operator GPUNoiseBufferHandle(float val)
-		{
-			var buf = new GPUNoiseBufferHandle(1, 1);
-			buf.Clear(val);
-			return buf;
-		}
 
+		//
+		// public static implicit operator GPUBufferHandle(float val)
+		// {
+		// 	var buf = new GPUBufferHandle(1, 1);
+		// 	buf.Clear(val);
+		// 	return buf;
+		// }
 	}
 }

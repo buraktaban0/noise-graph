@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Noise.Runtime.Attributes;
+﻿using Noise.Runtime.Attributes;
 using Procedural.GPU;
-using Unity.Mathematics;
 
 namespace Noise.Runtime.Nodes
 {
@@ -13,7 +7,7 @@ namespace Noise.Runtime.Nodes
 	{
 
 		[Input]
-		public GPUNoiseBufferHandle Final;
+		public GPUBufferHandle Final;
 
 
 		public override bool ShouldCreateBuffer() => false;

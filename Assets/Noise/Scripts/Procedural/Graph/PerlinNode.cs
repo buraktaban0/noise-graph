@@ -26,7 +26,7 @@ namespace Procedural.Graph
 		[Input] public float amplitude = 1f;
 		[Input] public float3 offset = 0f;
 
-		[Output] public GPUNoiseBufferHandle result;
+		[Output] public GPUBufferHandle result;
 
 		private float[] curveData;
 

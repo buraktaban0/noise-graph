@@ -13,7 +13,7 @@ namespace Procedural.Graph
 	{
 		private readonly string shaderName = "Hidden/Procedural/MinMax";
 
-		[Input] public GPUNoiseBufferHandle a;
+		[Input] public GPUBufferHandle a;
 
 		[Output] public float2 result;
 
@@ -38,7 +38,7 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
 
 			if (a.IsCreated == false)
 			{

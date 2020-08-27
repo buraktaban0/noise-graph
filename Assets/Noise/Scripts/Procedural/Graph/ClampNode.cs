@@ -15,11 +15,11 @@ namespace Procedural.Graph
 
 		private readonly string clampShaderName = "Hidden/Procedural/Clamp";
 
-		[Input] public GPUNoiseBufferHandle a;
+		[Input] public GPUBufferHandle a;
 		[Input] public float x0 = 0f;
 		[Input] public float x1 = 1f;
 
-		[Output] public GPUNoiseBufferHandle result;
+		[Output] public GPUBufferHandle result;
 
 		private Material clampMaterial;
 
@@ -31,7 +31,7 @@ namespace Procedural.Graph
 
 			var x0 = GetInputValue("x0", this.x0);
 			var x1 = GetInputValue("x1", this.x1);
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
 
 			if (a.IsCreated == false)
 			{

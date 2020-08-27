@@ -12,7 +12,7 @@ namespace Procedural.Graph
 {
 	public class NoiseMasterNode : NoiseGraphNode
 	{
-		[Input] public GPUNoiseBufferHandle final;
+		[Input] public GPUBufferHandle final;
 
 
 		public override object GetValue(NodePort port)
@@ -22,7 +22,7 @@ namespace Procedural.Graph
 			var sw = new System.Diagnostics.Stopwatch();
 			sw.Start();
 
-			var result = GetInputValue("final", default(GPUNoiseBufferHandle));
+			var result = GetInputValue("final", default(GPUBufferHandle));
 
 
 			sw.Stop();

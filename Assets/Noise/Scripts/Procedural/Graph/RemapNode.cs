@@ -17,11 +17,11 @@ namespace Procedural.Graph
 
 		private readonly string shaderName = "Hidden/Procedural/Remap";
 
-		[Input] public GPUNoiseBufferHandle a;
+		[Input] public GPUBufferHandle a;
 		[Input] public float2 from = new float2(0f, 1f);
 		[Input] public float2 to = new float2(0f, 2f);
 
-		[Output] public GPUNoiseBufferHandle result;
+		[Output] public GPUBufferHandle result;
 
 		private Material material;
 
@@ -31,7 +31,7 @@ namespace Procedural.Graph
 
 			ValidateBuffer();
 
-			var a = GetInputValue("a", default(GPUNoiseBufferHandle));
+			var a = GetInputValue("a", default(GPUBufferHandle));
 			var from = GetInputValue("from", this.from);
 			var to = GetInputValue("to", this.to);
 
