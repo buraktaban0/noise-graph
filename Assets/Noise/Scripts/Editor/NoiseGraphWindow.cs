@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Noise;
 using Noise.Runtime;
+using Noise.Runtime.Nodes;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -11,16 +12,16 @@ using UnityEngine.UIElements;
 
 namespace Noise.Editor
 {
-
 	public class NoiseGraphWindow : EditorWindow
 	{
-
 		public static NoiseGraph currentViewedGraph { get; set; }
 
 		private NoiseGraphView graphView;
 
 		private void OnEnable()
 		{
+			currentViewedGraph = ScriptableObject.CreateInstance<NoiseGraph>();
+
 			GenerateGraphView();
 
 			GenerateToolbar();
@@ -29,7 +30,6 @@ namespace Noise.Editor
 			{
 				DeserializeBuildCurrentGraph();
 			}
-
 		}
 
 		private void OnDisable()
@@ -59,24 +59,18 @@ namespace Noise.Editor
 
 		private void GenerateGraphView()
 		{
-
-			graphView = new NoiseGraphView
-			{
-				name = "Noise Graph View"
-			};
+			graphView = new NoiseGraphView("Noise Graph View", this);
 
 			graphView.StretchToParentSize();
 
 			rootVisualElement.Add(graphView);
-
 		}
 
 		private void DeserializeBuildCurrentGraph()
 		{
-			var nodes = currentViewedGraph.DeserializeNodes();
+			//var nodes = currentViewedGraph.DeserializeNodes();
 
-			var nodeViews = nodes.Select(node => new NoiseGraphNodeView(node, graphView)).ToList();
-
+			//var nodeViews = nodes.Select(node => new NoiseGraphNodeView(node, graphView)).ToList();
 		}
 
 
@@ -86,8 +80,5 @@ namespace Noise.Editor
 			var window = GetWindow<NoiseGraphWindow>();
 			window.titleContent = new GUIContent("Noise Graph");
 		}
-
 	}
-
-
 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$/../Library/Caches/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$/../Library/Caches/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_noise-graph.-2090289413.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\UnityProjectsC\noise-graph" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -232,7 +230,6 @@
               <e p="Elements" t="Include">
                 <e p="NodeIMGUIContainer.cs" t="Include" />
               </e>
-              <e p="GenericBindingWrapperEvent.cs" t="Include" />
               <e p="GraphLogicGenerator.cs" t="Include" />
               <e p="LogicGraphEditor.cs" t="Include" />
               <e p="LogicGraphEditorObject.cs" t="Include" />
@@ -265,13 +262,19 @@
                 <e p="PortInputView.cs" t="Include" />
                 <e p="VectorLogicSlot.cs" t="Include" />
               </e>
+              <e p="SearchWindowProvider.cs" t="Include" />
               <e p="SearchWindowProviderOLD.cs" t="Include" />
+              <e p="Serialization" t="Include">
+                <e p="Serializer.cs" t="Include" />
+              </e>
               <e p="SerializedNodeWrapper.cs" t="Include" />
               <e p="ThreadSafeCurvePropertyDrawer.cs" t="Include" />
               <e p="TitleAttribute.cs" t="Include" />
               <e p="Util" t="Include">
                 <e p="NoiseGraphAssetHandler.cs" t="Include" />
-                <e p="NoiseGraphBindableFieldProvider.cs" t="Include" />
+                <e p="PortData.cs" t="Include" />
+                <e p="PortTypeUtil.cs" t="Include" />
+                <e p="PreviewUtil.cs" t="Include" />
               </e>
             </e>
             <e p="Extensions" t="Include">
@@ -290,8 +293,6 @@
               <e p="Vector1OutputLogicNode.cs" t="Include" />
               <e p="Vector3InputLogicNode.cs" t="Include" />
             </e>
-            <e p="NoiseGraphLinkData.cs" t="Include" />
-            <e p="NoiseGraphNodeData.cs" t="Include" />
             <e p="Procedural" t="Include">
               <e p="BaseNoise.cs" t="Include" />
               <e p="Editor" t="Include">
@@ -327,23 +328,6 @@
                 <e p="PowerNode.cs" t="Include" />
                 <e p="PreviewNode.cs" t="Include" />
                 <e p="RemapNode.cs" t="Include" />
-                <e p="Shaders" t="Include">
-                  <e p="Resources" t="Include">
-                    <e p="CS_MinMax.compute" t="Include" />
-                    <e p="NewComputeShader.compute" t="Include" />
-                  </e>
-                  <e p="S_Add.shader" t="Include" />
-                  <e p="S_Clamp.shader" t="Include" />
-                  <e p="S_CurveTransform.shader" t="Include" />
-                  <e p="S_Lerp.shader" t="Include" />
-                  <e p="S_MinMax.shader" t="Include" />
-                  <e p="S_Multiply.shader" t="Include" />
-                  <e p="S_Multiplyf.shader" t="Include" />
-                  <e p="S_Perlin.shader" t="Include" />
-                  <e p="S_Power.shader" t="Include" />
-                  <e p="S_Remap.shader" t="Include" />
-                  <e p="S_Subtract.shader" t="Include" />
-                </e>
                 <e p="SubtractNode.cs" t="Include" />
               </e>
               <e p="HeightMapGenerator.cs" t="Include" />
@@ -386,6 +370,7 @@
             <e p="Runtime" t="Include">
               <e p="Attributes" t="Include">
                 <e p="InputAttribute.cs" t="Include" />
+                <e p="NodeAttribute.cs" t="Include" />
                 <e p="NodeIgnoreAttribute.cs" t="Include" />
                 <e p="OutputAttribute.cs" t="Include" />
               </e>
@@ -395,15 +380,21 @@
                 <e p="MasterNode.cs" t="Include" />
                 <e p="MultiplyNode.cs" t="Include" />
                 <e p="NoiseGraphNode.cs" t="Include" />
+                <e p="PerlinNode.cs" t="Include" />
+                <e p="PowerNode.cs" t="Include" />
                 <e p="SubtractNode.cs" t="Include" />
               </e>
               <e p="NodeTree.cs" t="Include" />
               <e p="NodeTreeElement.cs" t="Include" />
               <e p="NoiseGraph.cs" t="Include" />
+              <e p="Serialization" t="Include">
+                <e p="SerializedGraph.cs" t="Include" />
+                <e p="SerializedLink.cs" t="Include" />
+                <e p="SerializedNode.cs" t="Include" />
+                <e p="Serializer.cs" t="Include" />
+              </e>
               <e p="Util" t="Include">
                 <e p="MaterialCache.cs" t="Include" />
-                <e p="NoiseGraphNodeSerializer.cs" t="Include" />
-                <e p="PortTypeUtil.cs" t="Include" />
               </e>
             </e>
             <e p="SimpleCameraController.cs" t="Include" />
@@ -417,6 +408,24 @@
           <e p="Shader Includes" t="Include">
             <e p="NoiseMaster.hlsl" t="Include" />
             <e p="Perlin.hlsl" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="Add.shader" t="Include" />
+            <e p="Clamp.shader" t="Include" />
+            <e p="Clear.shader" t="Include" />
+            <e p="Lerp.shader" t="Include" />
+            <e p="Multiply.shader" t="Include" />
+            <e p="Power.shader" t="Include" />
+            <e p="Resources" t="Include">
+              <e p="CS_MinMax.compute" t="Include" />
+              <e p="NewComputeShader.compute" t="Include" />
+            </e>
+            <e p="S_CurveTransform.shader" t="Include" />
+            <e p="S_MinMax.shader" t="Include" />
+            <e p="S_Perlin.shader" t="Include" />
+            <e p="S_Remap.shader" t="Include" />
+            <e p="SingleToMulti.shader" t="Include" />
+            <e p="Subtract.shader" t="Include" />
           </e>
           <e p="xNode-master" t="Include">
             <e p="Scripts" t="Include">
@@ -667,9 +676,11 @@
       <e p="noise-graph.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
-      <e p="Temp/bin" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="XNode.csproj" t="IncludeRecursive" />
       <e p="XNodeEditor.csproj" t="IncludeRecursive" />
     </e>
+    <e p="C:\Users\PC1\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\PC1\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_noise-graph.-1716608085.00" t="ExcludeRecursive" />
   </component>
 </project>

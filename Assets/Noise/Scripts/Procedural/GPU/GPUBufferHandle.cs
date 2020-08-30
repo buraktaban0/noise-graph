@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Noise.Runtime.Util;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
 
 namespace Procedural.GPU
@@ -53,14 +55,13 @@ namespace Procedural.GPU
 			isCreated = true;
 		}
 
-		public void Clear(float val) => Clear(new Color(val, val, val, val));
+		public void Clear(float val) => Clear(new Vector4(val, val, val, val));
 
-		public void Clear(Color color)
+		public void Clear(Vector4 color)
 		{
-			var oldRt = RenderTexture.active;
-			RenderTexture.active = this;
-			GL.Clear(false, true, color);
-			RenderTexture.active = oldRt;
+			var clearMat = MaterialCache.GetMaterial(MaterialCache.Op.Clear);
+			clearMat.SetVector("_ClearColor", color);
+			Graphics.Blit(null, this, clearMat);
 		}
 
 		public void Resize(int width, int height)
@@ -101,12 +102,12 @@ namespace Procedural.GPU
 
 		public static GPUBufferHandle GetTemp(int width, int height)
 		{
-			var rt = UnityEngine.RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.R8);
+			var rt = UnityEngine.RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.RFloat);
 			var buffer = new GPUBufferHandle
-			             {
-				             Width = width, Height = height, RenderTexture = rt, isTemp = true, Range = 0f,
-				             isCreated = true
-			             };
+			{
+				Width = width, Height = height, RenderTexture = rt, isTemp = true, Range = 0f,
+				isCreated = true
+			};
 			return buffer;
 		}
 

@@ -11,17 +11,23 @@ namespace Noise.Runtime.Util
 			Subtract = 2,
 			Multiply = 3,
 			Clamp = 4,
-			Lerp = 5
+			Lerp = 5,
+			SingleToMultiChannel = 6,
+			Clear = 7,
+			Power = 8,
 		}
 
 
 		private static readonly (string, Op)[] Shaders =
 		{
-			("Procedural/Add", Op.Add),
-			("Procedural/Subtract", Op.Subtract),
-			("Procedural/Multiply", Op.Multiply),
-			("Procedural/Clamp", Op.Clamp),
-			("Procedural/Lerp", Op.Lerp),
+			("Clear", Op.Clear),
+			("SingleToMulti", Op.SingleToMultiChannel),
+			("Add", Op.Add),
+			("Subtract", Op.Subtract),
+			("Multiply", Op.Multiply),
+			("Clamp", Op.Clamp),
+			("Lerp", Op.Lerp),
+			("Power", Op.Power),
 		};
 
 		private static readonly Dictionary<Op, Material> Materials;
@@ -31,7 +37,8 @@ namespace Noise.Runtime.Util
 			Materials = new Dictionary<Op, Material>();
 			foreach (var (item1, item2) in Shaders)
 			{
-				var mat = new Material(Shader.Find(item1));
+				var shaderName = $"Hidden/Procedural/{item1}";
+				var mat = new Material(Shader.Find(shaderName));
 				Materials.Add(item2, mat);
 			}
 		}

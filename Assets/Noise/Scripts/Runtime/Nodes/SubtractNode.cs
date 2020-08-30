@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Noise.Runtime.Nodes
 {
+	[NodeAttribute(Name = "Subtract")]
 	public class SubtractNode : NoiseGraphNode
 	{
 		[Input(typeof(GPUBufferHandle))]

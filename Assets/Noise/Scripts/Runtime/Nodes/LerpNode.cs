@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Noise.Runtime.Nodes
 {
+	[NodeAttribute(Name = "Lerp")]
 	public class LerpNode : NoiseGraphNode
 	{
 		[Input(typeof(GPUBufferHandle))]

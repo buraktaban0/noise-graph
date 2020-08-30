@@ -5,45 +5,53 @@ using System.Text;
 using System.Threading.Tasks;
 using Noise.Runtime;
 using Noise.Runtime.Nodes;
+using Noise.Runtime.Serialization;
 using UnityEngine;
 
 namespace Noise.Runtime
 {
-
 	[CreateAssetMenu(menuName = "Noise Graph", fileName = "Noise Graph")]
 	public class NoiseGraph : ScriptableObject
 	{
-
-		public List<NoiseGraphNodeData> nodeData;
-		public List<NoiseGraphLinkData> linkData;
+		public SerializedGraph serializedGraph;
 
 		private List<NoiseGraphNode> nodes;
 
 		private Dictionary<int, NoiseGraphNode> nodesByGUID;
-		private Dictionary<int, List<NoiseGraphLinkData>> linksByGUID;
+		private Dictionary<int, List<SerializedLink>> linksByGUID;
 
 		public List<NoiseGraphNode> DeserializeNodes()
 		{
-			var nodes = nodeData.Select(data => data.Deserialize()).ToList();
-			return nodes;
+			this.nodes = serializedGraph?.serializedNodes.Select(Serializer.DeserializeNode).ToList();
+			return this.nodes;
 		}
 
-		public void ForceProcessAll()
+		public NoiseGraphNode GetNode(int guid)
 		{
+			return nodes.First(node => node.GUID == guid);
+		}
+
+		public void ProcessAllNodes()
+		{
+			if (nodes == null || nodes.Count < 1)
+			{
+				nodes = DeserializeNodes();
+
+				if (nodes == null)
+					return;
+			}
+
 			nodes.ForEach(n => n.Clear());
 
-			nodes.ForEach(n => EvaluateNode(n));
+			nodes.ForEach(EvaluateNode);
 		}
 
-		public void Process()
+		public void ProcessMainLine()
 		{
 			if (nodes == null || nodes.Count < 1)
 			{
 				nodes = DeserializeNodes();
 			}
-
-			nodesByGUID = nodes.ToDictionary(n => n.GUID);
-			linksByGUID = linkData.GroupBy(l => l.guid1).Select(g => g.ToList()).ToDictionary(list => list[0].guid1);
 
 			var masterNode = nodes.First(n => n is MasterNode) as MasterNode;
 
@@ -60,8 +68,11 @@ namespace Noise.Runtime
 				return;
 			}
 
-			List<NoiseGraphLinkData> inputLinks;
-			if (linksByGUID.TryGetValue(node.GUID, out inputLinks))
+			nodesByGUID = nodes.ToDictionary(n => n.GUID);
+			linksByGUID = serializedGraph.serializedLinks.GroupBy(l => l.guid1).Select(g => g.ToList())
+			                             .ToDictionary(list => list[0].guid1);
+
+			if (linksByGUID.TryGetValue(node.GUID, out List<SerializedLink> inputLinks))
 			{
 				for (int i = 0; i < inputLinks.Count; i++)
 				{
@@ -70,16 +81,19 @@ namespace Noise.Runtime
 
 					EvaluateNode(inputNode);
 
-					var f0 = inputNode.GetType().GetField(link.field0);
-					var value = f0.GetValue(inputNode);
-					node.SetInput(link.field1, value);
-
+					var value = inputNode.GetOutput(link.field0, null);
+					if (value != null)
+						node.SetInput(link.field1, value);
 				}
 			}
 
 			node.Process();
 		}
 
-
+		public void SetSerializedState(SerializedGraph serializedGraph)
+		{
+			this.serializedGraph = serializedGraph;
+			this.nodes = DeserializeNodes();
+		}
 	}
 }

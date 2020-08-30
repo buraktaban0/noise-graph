@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Noise.Runtime.Nodes
 {
+	[NodeAttribute(Name = "Add")]
 	public class AddNode : NoiseGraphNode
 	{
 		[Input(typeof(GPUBufferHandle))]

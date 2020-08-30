@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Noise.Runtime.Nodes
 {
+	[NodeAttribute(Name = "Multiply")]
 	public class MultiplyNode : NoiseGraphNode
 	{
 		[Input(typeof(GPUBufferHandle))]

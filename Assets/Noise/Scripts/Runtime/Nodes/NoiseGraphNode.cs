@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Procedural.GPU;
 using UnityEngine;
 
 namespace Noise.Runtime.Nodes
 {
 	[System.Serializable]
-	public abstract partial class NoiseGraphNode
+	public abstract class NoiseGraphNode
 	{
 		protected static readonly int HASH_TEXA = Shader.PropertyToID("_TexA");
 		protected static readonly int HASH_TEXB = Shader.PropertyToID("_TexB");
@@ -24,6 +25,7 @@ namespace Noise.Runtime.Nodes
 
 		public int GUID = rand.Next();
 
+		[NonSerialized]
 		public GPUBufferHandle buffer;
 
 		public bool wasProcessed { get; protected set; } = false;
@@ -77,6 +79,12 @@ namespace Noise.Runtime.Nodes
 		public void SetOutput(string name, object value)
 		{
 			outputs[name] = value;
+		}
+
+
+		public object GetInputOrOutput(string name)
+		{
+			return GetInput(name, null) ?? GetOutput(name, null);
 		}
 
 		public virtual void Process()

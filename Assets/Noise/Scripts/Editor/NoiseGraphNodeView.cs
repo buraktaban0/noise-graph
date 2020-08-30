@@ -22,26 +22,25 @@ using System.ComponentModel;
 
 namespace Noise.Editor
 {
-
 	public class NoiseGraphNodeView : Node
 	{
-
 		private static readonly Type InputAttrType = typeof(InputAttribute);
 		private static readonly Type OutputAttrType = typeof(OutputAttribute);
 
-		private static readonly float previewSize = 150;
+		private const float MAXPreviewSize = 150;
 
 		public int GUID => node.GUID;
 
-		public VisualElement inputPortsContainer => inputContainer[0];
-		public VisualElement inputFieldsContainer => inputContainer[1];
+		public Port[] Ports    => this.Query<Port>().ToList().ToArray();
+		public Type   NodeType => node.GetType();
 
-		public VisualElement outputPortsContainer => outputContainer[1];
-		public VisualElement outputFieldsContainer => outputContainer[0];
-
-		public NoiseGraph graph;
+		public NoiseGraph graph => NoiseGraphWindow.currentViewedGraph;
 
 		public NoiseGraphView graphView;
+
+		public SearchWindowProvider searchWindowProvider;
+
+		public EdgeConnectorListener edgeConnectorListener;
 
 		public NoiseGraphNode node;
 
@@ -50,12 +49,15 @@ namespace Noise.Editor
 
 		private VisualElement previewElement;
 
-		public NoiseGraphNodeView(NoiseGraphNode node, NoiseGraphView graphView)
+		public NoiseGraphNodeView(NoiseGraphNode node, NoiseGraphView graphView,
+		                          SearchWindowProvider searchWindowProvider,
+		                          EdgeConnectorListener edgeConnectorListener)
 		{
 			this.node = node;
 			this.graphView = graphView;
+			this.searchWindowProvider = searchWindowProvider;
+			this.edgeConnectorListener = edgeConnectorListener;
 
-			graph = NoiseGraphWindow.currentViewedGraph;
 
 			this.title = node.GetNodeName();
 
@@ -90,7 +92,6 @@ namespace Noise.Editor
 			var outputFields = publicFields.Where(f => f.IsDefined(OutputAttrType, true)).ToList();
 
 
-
 			foreach (var f in inputFields)
 			{
 				var inputAttr = f.GetCustomAttribute<InputAttribute>();
@@ -100,37 +101,28 @@ namespace Noise.Editor
 
 			foreach (var f in outputFields)
 			{
-				var allowedTypes = new Type[] { f.FieldType };
+				var allowedTypes = new Type[] {f.FieldType};
 				SetupField(f, Direction.Output, hasPort: true, hasInlineEditor: false, allowedTypes);
 			}
 
 			RefreshExpandedState();
 			RefreshPorts();
-
 		}
 
 
-
-
-		private void SetupField(FieldInfo f, Direction direction, bool hasPort, bool hasInlineEditor, Type[] allowedTypes)
+		private void SetupField(FieldInfo f, Direction direction, bool hasPort, bool hasInlineEditor,
+		                        Type[] allowedTypes)
 		{
-
 			if (!hasPort && !hasInlineEditor && f.IsDefined(typeof(NodeIgnoreAttribute)) == false)
 			{
-				Debug.LogWarning($"Field '{f.Name}' of type '{node.GetType().FullName}' has neither a port nor an inline editor. Ignoring field. Consider using 'NodeIgnore' attribute.");
+				Debug.LogWarning(
+					$"Field '{f.Name}' of type '{node.GetType().FullName}' has neither a port nor an inline editor. Ignoring field. Consider using 'NodeIgnore' attribute.");
 				return;
 			}
 
 			var container = direction == Direction.Input ? inputContainer : outputContainer;
 
 			var row = new VisualElement();
-
-			//row.tooltip = f.FieldType.Name;
-
-			//if (f.FieldType == typeof(GPUNoiseBufferHandle))
-			//{
-			//	SetupFieldForPreview(f, row);
-			//}
 
 			Port port = null;
 			port = InstantiatePort(Orientation.Horizontal, direction, Port.Capacity.Single, f.FieldType);
@@ -143,15 +135,22 @@ namespace Noise.Editor
 				types = allowedTypes
 			};
 
+			port.AddManipulator(new EdgeConnector<Edge>(edgeConnectorListener));
+
 			if (direction == Direction.Output)
 			{
 				port.Q<Label>().tooltip = f.FieldType.Name;
 				row.Add(port);
 				container.Add(row);
+				SetupFieldForPreview(f, row);
 				return;
 			}
 
-			if (!hasPort)
+			if (hasPort)
+			{
+				SetupFieldForPreview(f, row);
+			}
+			else
 			{
 				port.AddToClassList("dummyPort");
 				row.AddToClassList("portlessRow");
@@ -163,10 +162,11 @@ namespace Noise.Editor
 			lbl.style.marginRight = 0;
 
 			NodeIMGUIContainer boundElement = null;
-			boundElement = new NodeIMGUIContainer(f, serializedNode, serializedNodeWrapper, this.node, OnNodeModified);
-			boundElement.tooltip = f.FieldType.Name;
-
-			boundElement.labelOnly = !hasInlineEditor;
+			boundElement = new NodeIMGUIContainer(f, serializedNode, serializedNodeWrapper, this.node, OnNodeModified)
+			{
+				//tooltip = f.FieldType.Name,
+				labelOnly = !hasInlineEditor
+			};
 
 			row.Add(port);
 			row.Add(boundElement);
@@ -176,80 +176,100 @@ namespace Noise.Editor
 
 		private void SetupFieldForPreview(FieldInfo f, VisualElement row)
 		{
-			Vector2 GetPreviewImagePosition(Vector2 mouseWorldPos)
+			Vector2 GetPreviewImagePosition(Vector2 mouseWorldPos, Vector2 elementSize)
 			{
-				return this.parent.WorldToLocal(mouseWorldPos) + previewSize * Vector2.down + new Vector2(1f, -1f) * 2f;
+				return this.parent.WorldToLocal(mouseWorldPos) + elementSize.y * Vector2.down +
+				       new Vector2(1f, -1f) * 2f;
 			}
 
 			row.RegisterCallback<MouseEnterEvent>(ev =>
 			{
+				graph.ProcessAllNodes();
 
-				if (previewElement != null)
+				previewElement?.RemoveFromHierarchy();
+
+				var graphNode = graph.GetNode(this.GUID);
+
+				var previewedValue = graphNode.GetInputOrOutput(f.Name);
+
+				if (previewedValue == null)
 				{
-					previewElement.RemoveFromHierarchy();
-				}
-
-				var imageObj = f.GetValue(this.node);
-
-				if (imageObj == null)
-				{
+					previewElement = null;
 					return;
 				}
 
-				previewElement = new Image()
-				{
-					image = (GPUBufferHandle)imageObj
-				};
+				previewElement = PreviewUtil.GetPreviewElement(previewedValue, MAXPreviewSize);
 
-				previewElement.style.width = previewSize;
-				previewElement.style.height = previewSize;
+				//previewElement.style.width = previewSize;
+				//previewElement.style.height = previewSize;
+
 
 				this.parent.Add(previewElement);
+
 				previewElement.style.position = Position.Absolute;
 
-				previewElement.transform.position = GetPreviewImagePosition(ev.mousePosition);
+				var mousePosition = ev.mousePosition;
 
+				previewElement.RegisterCallback<GeometryChangedEvent>(geoEv =>
+				{
+					var elementSize = previewElement.layout.size;
+					previewElement.transform.position = GetPreviewImagePosition(mousePosition, elementSize);
+				});
 			});
 
 			row.RegisterCallback<MouseMoveEvent>(ev =>
 			{
 				if (previewElement != null)
 				{
-					previewElement.transform.position = GetPreviewImagePosition(ev.mousePosition);
+					var elementSize = previewElement.layout.size;
+
+					previewElement.transform.position = GetPreviewImagePosition(ev.mousePosition, elementSize);
 				}
 			});
+
 
 			row.RegisterCallback<MouseLeaveEvent>(ev =>
 			{
-				if (previewElement != null)
-				{
-					previewElement.RemoveFromHierarchy();
-					previewElement = null;
-				}
+				if (previewElement == null)
+					return;
+				previewElement.RemoveFromHierarchy();
+				previewElement = null;
 			});
 		}
 
-		public static NoiseGraphNodeView Build<T>(NoiseGraphView graphView) where T : NoiseGraphNode, new()
+		public static NoiseGraphNodeView Build<T>(NoiseGraphView graphView, SearchWindowProvider searchWindowProvider,
+		                                          EdgeConnectorListener edgeConnectorListener)
+			where T : NoiseGraphNode, new()
 		{
 			var node = new T();
 
-			var view = new NoiseGraphNodeView(node, graphView);
+			var view = new NoiseGraphNodeView(node, graphView, searchWindowProvider, edgeConnectorListener);
 
 			return view;
 		}
 
 		private void OnNodeModified()
 		{
-
+			graphView.OnGraphModified();
 		}
 
+		public void OnDeleted()
+		{
+			var edges = Ports.Where(p => p.connected).SelectMany(p => p.connections).ToList();
+
+			foreach (var edge in edges)
+			{
+				edge.input.Disconnect(edge);
+				edge.output.Disconnect(edge);
+				edge.RemoveFromHierarchy();
+			}
+
+			this.RemoveFromHierarchy();
+		}
+
+		public void ResetGuid()
+		{
+			node.GUID = new System.Random().Next();
+		}
 	}
-
-
-	public struct PortData
-	{
-		public Type[] types;
-	}
-
-
 }

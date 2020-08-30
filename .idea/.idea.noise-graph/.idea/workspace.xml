@@ -20,37 +20,113 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5745a952-5074-4ca7-9074-647e637dfa3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Serialization.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Serialization/Serializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Serialization/Serializer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PortData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PortData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PreviewUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PreviewUtil.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Attributes/NodeAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Attributes/NodeAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/PerlinNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/PerlinNode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/PowerNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/PowerNode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedGraph.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedGraph.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedLink.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedNode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/Serializer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/Serializer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Add.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Add.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Clamp.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Clear.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Lerp.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Multiply.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Multiply.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Power.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources/CS_MinMax.compute" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources/CS_MinMax.compute.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources/NewComputeShader.compute" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources/NewComputeShader.compute.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources/asd.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Resources/asd.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_CurveTransform.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_CurveTransform.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_MinMax.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_MinMax.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_Perlin.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_Perlin.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_Remap.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/S_Remap.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/SingleToMulti.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Noise/Shaders/Subtract.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.noise-graph/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.noise-graph/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.noise-graph/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.noise-graph/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.noise-graph/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.noise-graph/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/EdgeConnectorListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/EdgeConnectorListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Elements/NodeIMGUIContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Elements/NodeIMGUIContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/GenericBindingWrapperEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/GenericBindingWrapperEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/LogicGraphEditorView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/LogicGraphEditorView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphNodeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphNodeView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUNoiseBufferHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUNoiseBufferHandle.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/AddNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/AddNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/ClampNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/ClampNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/CurveTransformNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/CurveTransformNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/LerpNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/LerpNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MinMaxNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MinMaxNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MultiplyNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/MultiplyNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseGraphNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseGraphNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseMasterNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/NoiseMasterNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PerlinNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PerlinNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PowerNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PowerNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PreviewNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/PreviewNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/RemapNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/RemapNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/SubtractNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/SubtractNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/New Layered Noise 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/New Layered Noise 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/NoiseGraphBindableFieldProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/NoiseGraphBindableFieldProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/NoiseGraphLinkData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/NoiseGraphLinkData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedLink.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/NoiseGraphNodeData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/NoiseGraphNodeData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedNode.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources/CS_MinMax.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources/CS_MinMax.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources/NewComputeShader.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources/NewComputeShader.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources/asd.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/Resources/asd.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Add.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Add.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Clamp.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Clamp.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_CurveTransform.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_CurveTransform.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Lerp.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Lerp.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_MinMax.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_MinMax.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Multiply.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Multiply.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Multiplyf.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Multiplyf.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Perlin.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Perlin.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Power.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Power.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Remap.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Remap.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Subtract.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/Graph/Shaders/S_Subtract.shader.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/AddNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/AddNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MasterNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MasterNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SourceNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/NoiseGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/NoiseGraph.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/NoiseGraphNodeSerializer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/NoiseGraphNodeSerializer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/PortTypeUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PortTypeUtil.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/PortTypeUtil.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PortTypeUtil.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TEST_MapGeneration.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TEST_MapGeneration.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,31 +142,62 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" />
         <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/ClampNode.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Attributes/NodeAttribute.cs" />
         <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/AddNode.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/LerpNode.cs" />
         <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/MultiplyNode.cs" />
         <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/SubtractNode.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProviderOLD.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/LogicGraphEditorView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Elements/NodeIMGUIContainer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/EdgeConnectorListener.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/PortTypeUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/PortData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PortData.cs" />
         <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/SearchWindowProvider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/Serializer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/SerializedNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/SerializedLink.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Serialization/Serializer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/NoiseGraphNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphWindow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/SerializedNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Serialization/Serializer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/NoiseGraph.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/PerlinNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Shaders/SingleToMulti.shader" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PortTypeUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Shaders/Clear.shader" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Procedural/GPU/GPUBufferHandle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Shaders/Subtract.shader" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/Util/PreviewUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Shaders/Multiply.shader" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Shaders/Power.shader" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Shaders/Lerp.shader" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Util/MaterialCache.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Runtime/Nodes/PowerNode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphNodeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Noise/Scripts/Editor/NoiseGraphView.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1gd2Ge6uOOs4LDf9jJijLahT9yU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -123,6 +230,10 @@
       <workItem from="1598430066561" duration="10680000" />
       <workItem from="1598530110606" duration="28000" />
       <workItem from="1598530164937" duration="5148000" />
+      <workItem from="1598555322418" duration="156000" />
+      <workItem from="1598555510605" duration="3758000" />
+      <workItem from="1598693572850" duration="2128000" />
+      <workItem from="1598705832960" duration="31098000" />
     </task>
     <servers />
   </component>
@@ -144,20 +255,28 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1270" y="12" key="RiderGenerateDialog" timestamp="1598435929108">
-      <screen x="-1920" y="-225" width="1920" height="1080" />
+    <state x="714" y="389" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1598555476331">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="714" y="389" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598555476331" />
+    <state x="650" y="228" key="RiderGenerateDialog" timestamp="1598728428596">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1270" y="12" key="RiderGenerateDialog/-1920.-225.1920.1080/0.0.1792.1120@-1920.-225.1920.1080" timestamp="1598435929108" />
-    <state x="-1144" y="-97" width="1131" height="831" key="SettingsEditor" timestamp="1598432330661">
-      <screen x="-1920" y="-225" width="1920" height="1080" />
+    <state x="650" y="228" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598728428596" />
+    <state x="563" y="171" width="1131" height="831" key="SettingsEditor" timestamp="1598725974797">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1144" y="-97" width="1131" height="831" key="SettingsEditor/-1920.-225.1920.1080/0.0.1792.1120@-1920.-225.1920.1080" timestamp="1598432330661" />
-    <state x="-1297" y="14" width="672" height="678" key="search.everywhere.popup" timestamp="1598454148747">
-      <screen x="-1920" y="-225" width="1920" height="1080" />
+    <state x="563" y="171" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1598725974797" />
+    <state x="623" y="230" width="672" height="653" key="search.everywhere.popup" timestamp="1598744466793">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="14" width="672" height="678" key="search.everywhere.popup/-1920.-225.1920.1080/0.23.1792.1097@-1920.-225.1920.1080" timestamp="1598454148747" />
+    <state x="623" y="230" width="672" height="653" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598744466793" />
   </component>
 </project>

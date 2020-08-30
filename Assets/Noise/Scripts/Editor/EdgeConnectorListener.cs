@@ -2,31 +2,46 @@
 using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 
-namespace GeoTetra.GTLogicGraph
+namespace Noise.Editor
 {
-    public class EdgeConnectorListener : IEdgeConnectorListener
-    {
-        private readonly LogicGraphEditorView _logicGraphEditorView;
-        private readonly SearchWindowProvider _searchWindowProvider;
+	public class EdgeConnectorListener : IEdgeConnectorListener
+	{
+		private readonly NoiseGraphView _logicGraphEditorView;
+		private readonly SearchWindowProvider _searchWindowProvider;
 
-        public EdgeConnectorListener(LogicGraphEditorView logicGraphEditorView, SearchWindowProvider searchWindowProvider)
-        {
-            _logicGraphEditorView = logicGraphEditorView;
-            _searchWindowProvider = searchWindowProvider;
-        }
+		public EdgeConnectorListener(NoiseGraphView logicGraphEditorView, SearchWindowProvider searchWindowProvider)
+		{
+			_logicGraphEditorView = logicGraphEditorView;
+			_searchWindowProvider = searchWindowProvider;
+		}
 
-        public void OnDropOutsidePort(Edge edge, Vector2 position)
-        {
-            var draggedPort = (edge.output != null ? edge.output.edgeConnector.edgeDragHelper.draggedPort : null) ??
-                              (edge.input != null ? edge.input.edgeConnector.edgeDragHelper.draggedPort : null);
-            _searchWindowProvider.ConnectedLogicPort = (LogicPort) draggedPort;
-            //SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)),
-            //    _searchWindowProvider);
-        }
+		public void OnDropOutsidePort(Edge edge, Vector2 position)
+		{
+			Port draggedPort = null;
+			if (edge.input != null)
+			{
+				// Looking for output
+				draggedPort = edge.input;
+				_searchWindowProvider.IsConnectedInput = true;
+				Debug.Log("Input");
+			}
+			else
+			{
+				// Looking for input
+				draggedPort = edge.output;
+				_searchWindowProvider.IsConnectedInput = false;
+				Debug.Log("Output");
+			}
 
-        public void OnDrop(GraphView graphView, Edge edge)
-        {
-            _logicGraphEditorView.AddEdge(edge);
-        }
-    }
+
+			_searchWindowProvider.ConnectedPort = draggedPort;
+			SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)),
+			                  _searchWindowProvider);
+		}
+
+		public void OnDrop(GraphView graphView, Edge edge)
+		{
+			_logicGraphEditorView.AddEdge(edge);
+		}
+	}
 }

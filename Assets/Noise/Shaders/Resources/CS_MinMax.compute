@@ -1,0 +1,64 @@
+﻿
+Texture2D<float> InputTexture;
+
+#pragma kernel FindBrights
+#define GROUP_SIZE 8
+#define REGION_PER_THREAD 4
+groupshared int cachedPoint[GROUP_SIZE][GROUP_SIZE];
+
+AppendStructuredBuffer<int> _brightPoints;
+
+[numthreads(GROUP_SIZE, GROUP_SIZE, 1)]
+void FindBrights(uint3 globalId : SV_DispatchThreadID, uint3 localId : SV_GroupThreadID)
+{
+    int maximum = -1024 * 128;
+    int xStart = globalId.x * REGION_PER_THREAD;
+    int yStart = globalId.y * REGION_PER_THREAD;
+    for (int y = yStart; y < yStart + REGION_PER_THREAD; ++y)
+    {
+        for (int x = xStart; x < xStart + REGION_PER_THREAD; ++x)
+        {
+            int val = (int)(InputTexture[int2(x, y)] * 1024);
+            if (val > maximum)
+            {
+                maximum = val;
+            }
+        }
+    }
+
+    cachedPoint[localId.x][localId.y] = maximum;
+    GroupMemoryBarrierWithGroupSync();
+
+    uint stride;
+    for (stride = 2; stride <= GROUP_SIZE; stride *= 2)
+    {
+        if ((localId.x % stride) == 0)
+        {
+            if (cachedPoint[localId.x + stride / 2][localId.y] > cachedPoint[localId.x][localId.y])
+            {
+                cachedPoint[localId.x][localId.y] = cachedPoint[localId.x + stride / 2][localId.y];
+            }
+        }
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    for (stride = 2; stride <= GROUP_SIZE; stride *= 2)
+    {
+        if (localId.x == 0 && (localId.y % stride) == 0)
+        {
+            if (cachedPoint[0][localId.y + stride / 2] > cachedPoint[0][localId.y])
+            {
+                cachedPoint[0][localId.y] = cachedPoint[0][localId.y + stride / 2];
+            }
+        }
+
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    if (localId.x == 0 && localId.y == 0)
+    {
+        int _maximum = cachedPoint[0][0];
+        _brightPoints.Append(_maximum);
+    }
+
+}

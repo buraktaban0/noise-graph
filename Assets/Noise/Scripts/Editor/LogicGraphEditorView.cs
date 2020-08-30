@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GeoTetra.GTLogicGraph.Extensions;
+using Noise.Editor;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Experimental.UIElements.GraphView;
@@ -79,7 +80,7 @@ namespace GeoTetra.GTLogicGraph
             _searchWindowProvider = ScriptableObject.CreateInstance<SearchWindowProvider>();
             _searchWindowProvider.Initialize(editorWindow, this, _graphView);
 
-            _edgeConnectorListener = new EdgeConnectorListener(this, _searchWindowProvider);
+            _edgeConnectorListener = null;//new EdgeConnectorListener(this, _searchWindowProvider);
 
             _graphView.nodeCreationRequest = (c) =>
             {
